@@ -19,3 +19,70 @@
 </body>
 
 </html>
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>NAME's soundboard</title>
+    <link rel="shortcut icon" type="image/png" href="./favicon.png" />
+</head>
+
+<body>
+
+    <style>
+        button {
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 150px;
+            width: 150px;
+            background-color: transparent;
+            border: none;
+            position: relative;
+            margin: 20px;
+            background-image: url(./image.png);
+        }
+        
+        p {
+            position: absolute;
+            bottom: -38px;
+            font-size: 18px;
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+
+    <!-- Audio elements go here! -->
+
+
+
+    <h1>NAME'S SOUNDBOARD</h1>
+
+    <!-- Create the soundboard buttons -->
+    <div id='button-container'></div>
+    <script>
+        // Create the playing boolean list
+        var div = document.getElementById('button-container');
+        var sounds = ['harp', 'bass-drum', 'bugle-first-call', 'chinese-gong', 'congas', 'military-drum', 'tap-dancing'];
+        result = '';
+        for (var i = 0; i < sounds.length; i++) {
+            result += ` <audio id="` + sounds[i] + `">
+      <source src="./sounds/` + sounds[i] + `.wav" type="audio/wav">
+      Hi, your browser doesn't support audio files.
+    </audio>
+    <button onclick="toggleAudio('` + sounds[i] + `', ` + i + `)"><p>` + sounds[i] + `</p></button>`;
+        }
+        div.innerHTML = result;
+
+        function toggleAudio(sound, number) {
+            var audio = document.getElementById(sound);
+            audio.play();
+        }
+    </script>
+
+</body>
+
+</html>
